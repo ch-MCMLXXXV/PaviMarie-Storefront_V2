@@ -10,6 +10,7 @@ import clsx from "clsx"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 
 const Nav = () => {
   const pathname = usePathname()
@@ -49,7 +50,7 @@ const Nav = () => {
     >
       <header
         className={clsx(
-          "relative h-16 px-8 mx-auto transition-colors bg-transparent border-b border-transparent duration-200 group-hover:bg-white group-hover:border-gray-200",
+          "relative h-24 px-8 mx-auto transition-colors bg-transparent border-b border-transparent duration-200 group-hover:bg-white group-hover:border-gray-200",
           {
             "!bg-white !border-gray-200": !isHome || isScrolled,
           }
@@ -63,24 +64,33 @@ const Nav = () => {
             }
           )}
         >
-          <div className="flex-1 basis-0 h-full flex items-center">
+          <div className="flex items-center flex-1 h-full basis-0">
             <div className="block small:hidden">
               <Hamburger setOpen={toggle} />
             </div>
-            <div className="hidden small:block h-full">
-              <DropdownMenu />
+            <div className="hidden h-full small:block">
+              {/* <DropdownMenu /> */}
             </div>
           </div>
 
           <div className="flex items-center h-full">
-            <Link href="/" className="text-xl-semi uppercase">
-              Acme
+            <Link href="/">
+              <Image
+                src="/images/logo3.png"
+                alt="logo"
+                width={125}
+                height={125}
+              />
             </Link>
+            {/* <Link href="/">
+              <a className="uppercase text-xl-semi">PAVI MARIE</a>
+            </Link> */}
           </div>
 
-          <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
-            <div className="hidden small:flex items-center gap-x-6 h-full">
+          <div className="flex items-center justify-end flex-1 h-full gap-x-6 basis-0">
+            <div className="items-center hidden h-full small:flex gap-x-6">
               {process.env.FEATURE_SEARCH_ENABLED && <DesktopSearchModal />}
+              <Link href="/store">Store</Link>
               <Link href="/account">Account</Link>
             </div>
             <CartDropdown />
