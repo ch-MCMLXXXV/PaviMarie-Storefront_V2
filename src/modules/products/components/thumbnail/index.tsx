@@ -47,9 +47,10 @@ const ImageOrPlaceholder = ({
         objectFit: "cover",
         objectPosition: "center",
       }}
+      unoptimized={true}
     />
   ) : (
-    <div className="w-full h-full absolute inset-0 bg-gray-100 flex items-center justify-center">
+    <div className="absolute inset-0 flex items-center justify-center w-full h-full bg-gray-100">
       <PlaceholderImage size={size === "small" ? 16 : 24} />
     </div>
   )
